@@ -1,0 +1,44 @@
+<div class="pokemon-card card  p-2 text-center h-100">
+
+  <div class="pokemon-card__header">
+    <h5 class="pokemon-card__name">
+      <span class="pokemon-card__type"
+            [ngClass]="'pokemon-card__type--' + pokemon.type.toLowerCase()">
+            {{ pokemon.type | titlecase }}</span>
+      {{ pokemon.name | titlecase }}
+      <span class="pokemon-card__id">#{{ pokemon.id }}</span>
+    </h5>
+    <div class="pokemon-card__avatar">
+      <img [ngSrc]="pokemon.image"
+           alt="{{pokemon.name}}"
+           width="100"
+           height="100"
+           priority="false"
+           class="pokemon-card__avatar-img card-img-top mx-auto" />
+    </div>
+  </div>
+
+
+  <ul class="pokemon-card__status">
+    <li class="pokemon-card__status-item">
+      Wins
+      <span class="pokemon-card__status-item--wins">{{ pokemon.wins }}</span></li>
+    <li class="pokemon-card__status-item">
+      Losses
+      <span class="pokemon-card__status-item--losses">{{ pokemon.losses }}</span></li>
+    <li class="pokemon-card__status-item ">
+      Ties
+      <span class="pokemon-card__status-item--ties">{{ pokemon.ties }}</span></li>
+  </ul>
+
+  <div class="pokemon-card__winTies">
+    <span class="pokemon-card__winTies-label">Win Tie</span>
+    <div class="pokemon-card__winTies-bar">
+      <div class="pokemon-card__winTies-fill"
+           [style.--progress.%]="(pokemon.ties / (pokemon.wins + pokemon.losses + pokemon.ties) * 100)"></div>
+    </div>
+    <span class="pokemon-card__winTies-value">    {{ (pokemon.ties / (pokemon.wins + pokemon.losses + pokemon.ties) * 100) | number:'1.0-0' }}%</span>
+  </div>
+
+
+</div>

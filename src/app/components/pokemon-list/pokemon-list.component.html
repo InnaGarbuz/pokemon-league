@@ -1,0 +1,40 @@
+<div class="pokemon-league__controls mb-3 d-flex gap-2 justify-content-center">
+  <div class="pokemon-league__sort">
+    <label class="pokemon-league__label">Sort by</label>
+    <select  class="pokemon-league__select form-select form-select-sm"
+             [(ngModel)]="sortBy"
+             (change)="onSortChange()">
+      <option value="wins">Wins</option>
+      <option value="losses">Losses</option>
+      <option value="ties">Ties</option>
+      <option value="name">Name</option>
+      <option value="id">ID</option>
+    </select>
+  </div>
+
+  <div class="pokemon-league__sort">
+    <label class="pokemon-league__label">Direction</label>
+    <select class="pokemon-league__select form-select form-select-sm"
+            [(ngModel)]="sortDir" (change)="onSortChange()">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+</div>
+
+
+<ng-container *ngIf="pokemons$ | async as pokemons; else loadingTemplate">
+  <div class="text-center mt-3">
+    <button class="btn btn-primary" (click)="nextPokemon()">Next 16 Pokémon</button>
+  </div>
+  <div class="pokemon-league__list row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 mt-3">
+    <div class="pokemon-league__item col"
+         *ngFor="let p of pokemons; trackBy: trackById">
+         <app-pokemon-card [pokemon]="p"></app-pokemon-card>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loadingTemplate>
+  <div class="pokemon-league__loading text-center mt-4">Loading...</div>
+</ng-template>

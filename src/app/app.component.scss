@@ -1,0 +1,12 @@
+.pokemon-tournament {
+  padding: 40px 20px;
+  background: #f4f3f3;
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
+  &__container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
