@@ -17,4 +17,5 @@ import { DecimalPipe, NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/
 })
 export class PokemonCardComponent {
   @Input() pokemon!: TournamentPokemon;
+  public defaultPokemonImage:string = "assets/images/pokeball.png";
 }
